@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación</title>
+</head>
+<body>
+
+    <main>
+        <section id="iniciar-sesion">
+            <h1>Iniciar sesión</h1>
+
+            <form>
+                <label for="correo-login">Correo electrónico</label>
+                <input type="email" id="correo-login" name="correo" required>
+
+                <label for="password-login">Contraseña</label>
+                <input type="password" id="password-login" name="password" required>
+
+                <button type="submit">Ingresar</button>
+            </form>
+
+            <p>¿No tienes una cuenta?
+                <a href="#crear-cuenta">Crear cuenta</a>
+            </p>
+        </section>
+
+        <section id="crear-cuenta" hidden>
+            <h1>Crear cuenta</h1>
+
+            <form>
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo-registro">Correo electrónico</label>
+                <input type="email" id="correo-registro" name="correo" required>
+
+                <label for="password-registro">Contraseña</label>
+                <input type="password" id="password-registro" name="password" required>
+
+                <button type="submit">Crear cuenta</button>
+            </form>
+
+            <p>¿Ya tienes una cuenta?
+                <a href="#iniciar-sesion">Iniciar sesión</a>
+            </p>
+        </section>
+    </main>
+
+    <script>
+        const login = document.getElementById("iniciar-sesion");
+        const registro = document.getElementById("crear-cuenta");
+
+        function mostrarFormulario() {
+            const crearCuenta = window.location.hash === "#crear-cuenta";
+
+            login.hidden = crearCuenta;
+            registro.hidden = !crearCuenta;
+        }
+
+        window.addEventListener("hashchange", mostrarFormulario);
+        mostrarFormulario();
+    </script>
+
+</body>
+</html>
